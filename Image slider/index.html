@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background: linear-gradient(rgb(254, 254, 199),rgb(156, 194, 237));
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 15px;
+            height: 80vh;
+            width: 70%;
+            position: relative;
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .img {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .arrow {
+            position: absolute;
+            top: 52px;
+            width: 91%;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .arrow i {
+            cursor: pointer;
+        }
+        .arrow span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .left {
+            transform: rotate(180deg);
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .img img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="nav"> 
+            <a href="#">Gallery</a>
+            <b><a href="#">MoodBoard</a></b>
+            <a href="#">Login</a>    
+        </div> 
+       <div class="img" id="imageSlider">
+           <img src="1.jpg" alt="">
+           <img src="2.jpg" alt="">
+           <img src="3.jpg" alt="">
+           <img src="4.jpg" alt="">
+           <img src="5.jpg" alt="">
+       </div>
+       <div class="arrow">
+            <i class="fas fa-arrow-right left" onclick="prevSlide()"></i>
+            <span id="imageCounter"></span>
+            <i class="fas fa-arrow-right" onclick="nextSlide()"></i>
+       </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        const totalSlides = document.getElementById('imageSlider').getElementsByTagName('img').length;
+        const imageNames = ['Earth', 'Galaxy', 'Saturn', 'Saturn Ring', 'Jupiter'];
+        
+        function showSlide(index) {
+            const slides = document.getElementById('imageSlider').getElementsByTagName('img');
+            if (index < 0) {
+                slideIndex = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                slideIndex = 0;
+            }
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+            document.getElementById('imageCounter').textContent = imageNames[slideIndex];
+        }
+        
+        function prevSlide() {
+            showSlide(--slideIndex);
+        }
+        
+        function nextSlide() {
+            showSlide(++slideIndex);
+        }
+    </script>
+</body>
+</html>
