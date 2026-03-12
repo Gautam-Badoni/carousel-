@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arcade Hub - Snake & Tic Tac Toe</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>🎮 Arcade Hub</h1>
+        <p>Pick a game and start playing instantly.</p>
+      </header>
+
+      <section class="game-picker" aria-label="Game picker">
+        <button class="game-card active" data-game="snake" id="select-snake">
+          <span class="emoji">🐍</span>
+          <span class="title">Legendary Snake</span>
+          <span class="subtitle">Eat, grow, and dodge the walls.</span>
+        </button>
+        <button class="game-card" data-game="tic" id="select-tic">
+          <span class="emoji">⭕❌</span>
+          <span class="title">Tic Tac Toe</span>
+          <span class="subtitle">Classic 2-player challenge.</span>
+        </button>
+      </section>
+
+      <section class="game-stage">
+        <article class="panel active" id="snake-panel" aria-labelledby="select-snake">
+          <div class="panel-header">
+            <h2>Legendary Snake</h2>
+            <p>Use arrow keys. Press <strong>R</strong> to restart.</p>
+          </div>
+          <div class="stats">
+            <span>Score: <strong id="snake-score">0</strong></span>
+            <span>Best: <strong id="snake-best">0</strong></span>
+          </div>
+          <canvas id="snake-canvas" width="400" height="400" aria-label="Snake game board"></canvas>
+          <button class="secondary" id="snake-reset">Restart Snake</button>
+        </article>
+
+        <article class="panel" id="tic-panel" aria-labelledby="select-tic">
+          <div class="panel-header">
+            <h2>Tic Tac Toe</h2>
+            <p>Take turns and be the first to connect 3 in a row.</p>
+          </div>
+          <p id="tic-status" class="status">Player X's turn</p>
+          <div id="tic-board" class="tic-board" role="grid" aria-label="Tic Tac Toe board"></div>
+          <button class="secondary" id="tic-reset">Reset Tic Tac Toe</button>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
